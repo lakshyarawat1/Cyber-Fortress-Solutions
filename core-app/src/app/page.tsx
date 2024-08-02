@@ -1,8 +1,9 @@
+import Navbar from "@/components/global/Navbar";
 
 export default function Home() {
   return (
-    <div className="text-3xl">
-      Home Page
+    <div>
+      <Navbar />
     </div>
   );
 }
