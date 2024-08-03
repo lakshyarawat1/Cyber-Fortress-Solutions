@@ -104,7 +104,7 @@ const Navbar = (props: Props) => {
       </NavigationMenu>
       <div className="flex gap-3">
         <ModeToggle />
-        <Button>Login</Button>
+        {/* <Button>Login</Button> */}
       </div>
     </nav>
   );
