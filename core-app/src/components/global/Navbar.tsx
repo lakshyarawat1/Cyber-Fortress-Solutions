@@ -18,7 +18,7 @@ const icon = "icon.ico";
 
 const Navbar = (props: Props) => {
   return (
-    <nav className="flex gap-[25%] my-2 mx-2">
+    <nav className="flex gap-[25%] my-2 pb-3 mx-2 border-b">
       <div className="flex gap-3 items-center">
         <Avatar>
           <AvatarImage src={icon} className="cursor-pointer" />

@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Cyber Fortress - IT Solutions",
   description: "",
   icons: "",
 };
-
+const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -18,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={GeistSans.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
