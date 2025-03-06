@@ -16,10 +16,10 @@ export default function Home() {
       <Navbar />
 
       <div className="text-center w-[80%] border-x-2 border-dashed mx-auto mt-[6%]   dark:bg-[#020817] bg-primary bg-white">
-        <h1 className="text-7xl font-black tracking-tighter ">
+        <h1 className="text-4xl md:text-7xl font-black tracking-tighter ">
           Welcome to <span className="text-red-500">Cyber</span> Fortress {">_"}
         </h1>
-        <h4 className="text-muted-foreground px-36 text-xl border-b py-12 pb-20">
+        <h4 className="text-muted-foreground px-36 md:text-xl border-b py-12 pb-20">
           We specialize in
           <span className="dark:text-white text-black">
             {" "}
@@ -36,10 +36,10 @@ export default function Home() {
             What do we offer ?
           </h1>
         </div>
-        <div className="flex py-12 flex-wrap gap-6 px-6">
+        <div className="md:flex py-12 md:flex-wrap gap-6 px-6 ">
           {homeConstants.map((tile, idx) => (
             <Card
-              className="max-w-[30%] max-h-[30rem] mx-auto cursor-pointer hover:shadow-lg duration-500 dark:hover:shadow-slate-700 dark:hover:shadow-lg hover:scale-[102%]"
+              className="md:max-w-[30%] max-w-[80%] max-h-[50rem] md:max-h-[30rem] mx-auto cursor-pointer hover:shadow-lg duration-500 dark:hover:shadow-slate-700 dark:hover:shadow-lg hover:scale-[102%]"
               key={idx}
             >
               <Image
@@ -47,7 +47,7 @@ export default function Home() {
                 alt="Tile"
                 width={400}
                 height={400}
-                className="rounded-t-lg object-none w-full h-[46%]"
+                className="rounded-t-lg object-none w-full md:h-[46%]"
               />
 
               <CardHeader>

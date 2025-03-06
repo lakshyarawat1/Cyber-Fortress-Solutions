@@ -18,7 +18,7 @@ const icon = "icon.ico";
 
 const Navbar = (props: Props) => {
   return (
-    <nav className="flex gap-[25%] my-2 pb-3 mx-2 border-b">
+    <nav className="md:flex gap-[25%] mx-[35%] my-2 pb-3 md:mx-2 border-b">
       <div className="flex gap-3 items-center">
         <Avatar>
           <AvatarImage src={icon} className="cursor-pointer" />
@@ -28,7 +28,7 @@ const Navbar = (props: Props) => {
           Cyber <span className="text-black dark:text-white">Fortress </span>
         </p>
       </div>
-      <NavigationMenu>
+      <NavigationMenu className="hidden md:flex">
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
@@ -102,7 +102,7 @@ const Navbar = (props: Props) => {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="flex gap-3">
+      <div className="hidden md:flex gap-3">
         <ModeToggle />
         {/* <Button>Login</Button> */}
       </div>
