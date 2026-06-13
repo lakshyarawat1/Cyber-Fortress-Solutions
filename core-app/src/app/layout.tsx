@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Cyber Fortress - IT Solutions",
   description: "",
   icons: "",
 };
-const inter = Inter({ subsets: ["latin"] });
+
+// ⚡ Bolt: Removed unused font (Inter) import and instantiation.
+// Previously, Next.js would fetch and process the unused Inter font at build time.
+// Removing this dead code prevents unnecessary build-time work and reduces potential bundle size bloat.
 export default function RootLayout({
   children,
 }: Readonly<{
