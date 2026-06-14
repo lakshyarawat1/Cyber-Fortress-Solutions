@@ -37,10 +37,10 @@ export default function Home() {
           </h1>
         </div>
         <div className="md:flex py-12 md:flex-wrap gap-6 px-6 ">
-          {homeConstants.map((tile, idx) => (
+          {homeConstants.map((tile) => (
             <Card
               className="md:max-w-[30%] max-w-[80%] max-h-[50rem] md:max-h-[30rem] mx-auto cursor-pointer hover:shadow-lg duration-500 dark:hover:shadow-slate-700 dark:hover:shadow-lg hover:scale-[102%]"
-              key={idx}
+              key={tile.title}
             >
               <Image
                 src={tile.svg}
