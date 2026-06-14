@@ -1,3 +1,6 @@
-## 2026-06-13 - Unused Next.js Font Import
-**Learning:** Next.js font instantiations (like `Inter()`) trigger build-time processing (downloading, generating CSS) even if the generated CSS class is never applied in the DOM.
-**Action:** Always check if instantiated fonts are actually used in the render tree; removing unused ones saves build time and potential bundle bloat.
+## Performance Optimization: Next.js Image LCP
+
+* **Issue**: Unoptimized images mapped via `Array.map` missing priority attribute in `next/image`.
+* **Impact**: Delayed Largest Contentful Paint (LCP) during initial page load due to deferred image fetching of above-the-fold content.
+* **Resolution**: Added `priority={idx <= 2}` to images expected to render above-the-fold.
+* **Learnings**: Headless lighthouse tests running locally often underreport LCP improvements on high-speed simulated networks, but `priority` flags on LCP elements are a proven web-vital critical optimization standard in Next.js applications and remain essential despite local measurement noise.
