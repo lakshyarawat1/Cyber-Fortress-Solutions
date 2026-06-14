@@ -9,7 +9,6 @@ import {
 } from "../ui/navigation-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { ModeToggle } from "./ModeToggle";
-import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 
 type Props = {};
@@ -104,7 +103,6 @@ const Navbar = (props: Props) => {
       </NavigationMenu>
       <div className="hidden md:flex gap-3">
         <ModeToggle />
-        {/* <Button>Login</Button> */}
       </div>
     </nav>
   );
