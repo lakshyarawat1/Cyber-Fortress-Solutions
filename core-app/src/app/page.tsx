@@ -48,6 +48,7 @@ export default function Home() {
                 width={400}
                 height={400}
                 className="rounded-t-lg object-none w-full md:h-[46%]"
+                priority={idx < 3}
               />
 
               <CardHeader>
