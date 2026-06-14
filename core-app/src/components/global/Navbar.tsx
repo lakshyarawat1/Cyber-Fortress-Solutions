@@ -9,14 +9,11 @@ import {
 } from "../ui/navigation-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { ModeToggle } from "./ModeToggle";
-import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
-
-type Props = {};
 
 const icon = "icon.ico";
 
-const Navbar = (props: Props) => {
+const Navbar = () => {
   return (
     <nav className="md:flex gap-[25%] mx-[35%] my-2 pb-3 md:mx-2 border-b">
       <div className="flex gap-3 items-center">
