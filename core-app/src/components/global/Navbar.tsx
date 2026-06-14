@@ -101,7 +101,6 @@ const Navbar = () => {
       </NavigationMenu>
       <div className="hidden md:flex gap-3">
         <ModeToggle />
-        {/* <Button>Login</Button> */}
       </div>
     </nav>
   );
