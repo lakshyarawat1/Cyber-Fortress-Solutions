@@ -9,7 +9,6 @@ import {
 } from "../ui/navigation-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { ModeToggle } from "./ModeToggle";
-import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 
 const icon = "icon.ico";
