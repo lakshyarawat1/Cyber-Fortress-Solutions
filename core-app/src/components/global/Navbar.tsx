@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -34,7 +35,7 @@ const Navbar = () => {
                 <ul className=" grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
-                      <a
+                      <Link
                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         href="/"
                       >
@@ -44,7 +45,7 @@ const Navbar = () => {
                         <p className="text-sm leading-tight text-muted-foreground">
                           Development and security solutions.
                         </p>
-                      </a>
+                      </Link>
                     </NavigationMenuLink>
                   </li>
                   <ListItem href="/products" title="Products">
@@ -71,10 +72,10 @@ const Navbar = () => {
             <NavigationMenuContent>
               <NavigationMenuLink>
                 <ul className=" md:w-[400px] lg:w-[500px] p-4">
-                  <ListItem title="Students">
+                  <ListItem href="#" title="Students">
                     Cyber security and development training for students.
                   </ListItem>
-                  <ListItem title="Professionals">
+                  <ListItem href="#" title="Professionals">
                     High-end professional training for singular and
                     organizational basis.
                   </ListItem>
@@ -87,10 +88,10 @@ const Navbar = () => {
             <NavigationMenuContent>
               <NavigationMenuLink>
                 <ul className=" md:w-[400px] lg:w-[500px] p-4">
-                  <ListItem title="Github">
+                  <ListItem href="#" title="Github">
                     Source code for projects and code snippets.
                   </ListItem>
-                  <ListItem title="E-Books">
+                  <ListItem href="#" title="E-Books">
                     Free e-books and resources for developers.
                   </ListItem>
                 </ul>
@@ -106,14 +107,16 @@ const Navbar = () => {
   );
 };
 
+// ⚡ Bolt: Use Next.js Link instead of a standard <a> tag for navigation.
+// This enables client-side routing, avoiding a full page reload and reducing navigation latency.
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
+  React.ElementRef<typeof Link>,
+  React.ComponentPropsWithoutRef<typeof Link> & { title: string }
 >(({ className, title, children, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
@@ -125,7 +128,7 @@ const ListItem = React.forwardRef<
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
