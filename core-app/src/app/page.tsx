@@ -42,12 +42,15 @@ export default function Home() {
               className="md:max-w-[30%] max-w-[80%] max-h-[50rem] md:max-h-[30rem] mx-auto cursor-pointer hover:shadow-lg duration-500 dark:hover:shadow-slate-700 dark:hover:shadow-lg hover:scale-[102%]"
               key={idx}
             >
+              {/* ⚡ Bolt: Use static imports and sizes attribute for next/image.
+                  Static imports automatically provide width/height and a base64 blur placeholder, dramatically improving perceived LCP and preventing CLS.
+                  The sizes attribute ensures smaller viewports download appropriately scaled images, saving bandwidth. */}
               <Image
                 src={tile.svg}
-                alt="Tile"
-                width={400}
-                height={400}
-                className="rounded-t-lg object-none w-full md:h-[46%]"
+                alt={tile.title}
+                className="rounded-t-lg object-cover w-full md:h-[46%]"
+                placeholder="blur"
+                sizes="(max-width: 768px) 80vw, 30vw"
                 priority={idx < 3}
               />
 
