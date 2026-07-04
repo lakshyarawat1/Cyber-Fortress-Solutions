@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import Navbar from '../Navbar';
 
 // Mock ResizeObserver for Radix UI
@@ -42,8 +42,8 @@ jest.mock('../ModeToggle', () => ({
 }));
 
 describe('Navbar Component', () => {
-  it('renders the brand name and avatar correctly', () => {
-    render(<Navbar />);
+  it('renders the brand name and avatar correctly', async () => {
+    await act(async () => { render(<Navbar />); });
     expect(screen.getByText('Cyber')).toBeInTheDocument();
     expect(screen.getByText('Fortress')).toBeInTheDocument();
 
@@ -53,8 +53,8 @@ describe('Navbar Component', () => {
     expect(screen.getByTestId('avatar-fallback')).toBeInTheDocument();
   });
 
-  it('renders the navigation menu items correctly', () => {
-    render(<Navbar />);
+  it('renders the navigation menu items correctly', async () => {
+    await act(async () => { render(<Navbar />); });
     // Since we mocked NavigationMenu components, the triggers should be present
     const triggers = screen.getAllByTestId('navigation-menu-trigger');
     expect(triggers).toHaveLength(4); // Solutions, Pricing, Training, Resources
@@ -65,8 +65,8 @@ describe('Navbar Component', () => {
     expect(screen.getByText('Resources')).toBeInTheDocument();
   });
 
-  it('renders the ModeToggle component', () => {
-    render(<Navbar />);
+  it('renders the ModeToggle component', async () => {
+    await act(async () => { render(<Navbar />); });
     expect(screen.getByTestId('mode-toggle')).toBeInTheDocument();
   });
 });
