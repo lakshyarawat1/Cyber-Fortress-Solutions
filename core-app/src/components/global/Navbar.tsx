@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,8 +10,15 @@ import {
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { ModeToggle } from "./ModeToggle";
 import { cn } from "@/lib/utils";
+
+// ⚡ Bolt: Dynamically import ModeToggle to reduce initial JS payload.
+// ModeToggle relies on heavy Radix UI DropdownMenu primitives which aren't strictly necessary for initial page render.
+// By lazy-loading it, we shave off unused JS from the initial First Load, improving TTI (Time to Interactive).
+const ModeToggle = dynamic(() => import("./ModeToggle").then((mod) => mod.ModeToggle), {
+  ssr: false,
+  loading: () => <div className="h-10 w-10 border rounded-md border-input bg-background" /> // Placeholder matching Button size="icon"
+});
 
 const icon = "icon.ico";
 
@@ -31,7 +39,7 @@ const Navbar = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <NavigationMenuLink>
+              <NavigationMenuLink asChild>
                 <ul className=" grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
@@ -70,7 +78,7 @@ const Navbar = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Training</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <NavigationMenuLink>
+              <NavigationMenuLink asChild>
                 <ul className=" md:w-[400px] lg:w-[500px] p-4">
                   <ListItem href="#" title="Students">
                     Cyber security and development training for students.
@@ -86,7 +94,7 @@ const Navbar = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <NavigationMenuLink>
+              <NavigationMenuLink asChild>
                 <ul className=" md:w-[400px] lg:w-[500px] p-4">
                   <ListItem href="#" title="Github">
                     Source code for projects and code snippets.
