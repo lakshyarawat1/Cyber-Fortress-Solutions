@@ -18,7 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    // ⚡ Bolt: Added suppressHydrationWarning to the root HTML tag.
+    // next-themes injects attributes on the html tag at runtime, which causes a hydration mismatch
+    // when React attempts to hydrate the server-rendered HTML. Without this, React throws a warning
+    // and is forced to perform a slower client-side re-render of the entire document tree.
+    <html lang="en" suppressHydrationWarning>
       <body className={GeistSans.className}>
         <ThemeProvider
           attribute="class"
