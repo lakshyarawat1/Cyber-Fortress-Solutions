@@ -20,3 +20,7 @@
 ## 2025-01-20 - [Next.js AVIF Image Optimization]
 **Learning:** Next.js uses WebP as the default format for automatic Image Optimization. While WebP is great, AVIF provides ~20% better compression than WebP, leading to significantly smaller image payloads for browsers that support it. This translates directly to faster image load times and improved Largest Contentful Paint (LCP), which is especially noticeable for image-heavy pages like the landing page.
 **Action:** Always enable `formats: ['image/avif', 'image/webp']` in `next.config.js` or `next.config.mjs` under the `images` key. Next.js handles content negotiation automatically, serving AVIF to supported browsers and falling back to WebP for unsupported ones, providing the best of both worlds with a single line of config.
+
+## $(date +%Y-%m-%d) - [Hydration Mismatch with next-themes]
+**Learning:** Found a performance penalty in `layout.tsx` when using `next-themes` without `suppressHydrationWarning` on the `<html>` tag. `next-themes` mutates the `class` or `style` attributes on the client to avoid FOUC. This mismatch with the server-rendered HTML causes React to trigger a full client-side re-render of the root tree, delaying Time to Interactive (TTI) and increasing Total Blocking Time (TBT).
+**Action:** Always add `suppressHydrationWarning` to the root `<html>` tag when integrating `next-themes` in a Next.js App Router project to safely bypass the hydration mismatch check and avoid unnecessary root re-renders.
