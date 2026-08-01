@@ -42,16 +42,18 @@ export default function Home() {
               className="md:max-w-[30%] max-w-[80%] max-h-[50rem] md:max-h-[30rem] mx-auto cursor-pointer hover:shadow-lg duration-500 dark:hover:shadow-slate-700 dark:hover:shadow-lg hover:scale-[102%]"
               key={idx}
             >
-              {/* ⚡ Bolt: Use static imports and sizes attribute for next/image.
-                  Static imports automatically provide width/height and a base64 blur placeholder, dramatically improving perceived LCP and preventing CLS.
-                  The sizes attribute ensures smaller viewports download appropriately scaled images, saving bandwidth. */}
+              {/* ⚡ Bolt: Removed priority prop from below-the-fold images.
+                  These images render below the hero section. Using priority here forces immediate preloading,
+                  wasting critical bandwidth that competes with above-the-fold assets, delaying actual LCP.
+                  Removing priority restores Next.js's default loading="lazy" behavior.
+                  Additionally: Using static imports (automatically provides blur placeholder/dimensions)
+                  and the sizes attribute ensures responsive, bandwidth-efficient rendering without CLS. */}
               <Image
                 src={tile.svg}
                 alt={tile.title}
                 className="rounded-t-lg object-cover w-full md:h-[46%]"
                 placeholder="blur"
                 sizes="(max-width: 768px) 80vw, 30vw"
-                priority={idx < 3}
               />
 
               <CardHeader>
