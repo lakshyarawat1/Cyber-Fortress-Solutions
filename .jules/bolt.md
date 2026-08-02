@@ -27,3 +27,7 @@
 ## $(date +%Y-%m-%d) - [Hydration Mismatch with next-themes]
 **Learning:** Found a performance penalty in `layout.tsx` when using `next-themes` without `suppressHydrationWarning` on the `<html>` tag. `next-themes` mutates the `class` or `style` attributes on the client to avoid FOUC. This mismatch with the server-rendered HTML causes React to trigger a full client-side re-render of the root tree, delaying Time to Interactive (TTI) and increasing Total Blocking Time (TBT).
 **Action:** Always add `suppressHydrationWarning` to the root `<html>` tag when integrating `next-themes` in a Next.js App Router project to safely bypass the hydration mismatch check and avoid unnecessary root re-renders.
+
+## 2024-08-01 - [Avoid Premature Image Prioritization in Next.js]
+**Learning:** Found a performance anti-pattern where images mapped in a grid below a large hero section were given `priority={idx < 3}`. Preloading images that are situated below the initial fold wastes critical network bandwidth during the initial page load, competing with essential assets (CSS/fonts/JS) and negatively impacting Largest Contentful Paint (LCP).
+**Action:** Only use the `priority` prop on `next/image` for images definitively verified to appear above the fold (e.g., LCP hero images). For below-the-fold content, rely on Next.js's default `loading="lazy"` behavior to defer loading until they enter the viewport.
