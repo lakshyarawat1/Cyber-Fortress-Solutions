@@ -43,7 +43,13 @@ const Navbar = () => {
                 <ul className=" grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
+                      {/* ⚡ Bolt: Disabled automatic prefetching for Links inside mega-menus.
+                          Next.js by default prefetches all <Link> components in the viewport. When a large mega-menu opens,
+                          this causes a sudden burst of network requests (one for each link), consuming bandwidth and potentially
+                          causing UI jank during the menu open animation. Setting prefetch={false} defers prefetching until
+                          hover, keeping the initial menu interaction lightweight. */}
                       <Link
+                        prefetch={false}
                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         href="/"
                       >
@@ -126,6 +132,7 @@ const ListItem = React.forwardRef<
       <NavigationMenuLink asChild>
         <Link
           ref={ref}
+          prefetch={false} // ⚡ Bolt: Disable prefetch to prevent network bursts on menu open.
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className

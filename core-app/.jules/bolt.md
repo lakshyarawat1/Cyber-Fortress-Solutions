@@ -1,0 +1,3 @@
+## 2024-08-08 - [Dropdown Link Prefetching Network Burst]
+**Learning:** Next.js `<Link>` components automatically prefetch their target routes when they enter the viewport. In dropdowns and mega-menus containing numerous links, this default behavior can cause a massive sudden burst of concurrent network requests as soon as the menu opens, competing for main thread resources and potentially causing UI animation stutter.
+**Action:** When implementing large dropdowns or mega-menus in Next.js, always add `prefetch={false}` to the `<Link>` components within them to defer the prefetch until hover, thereby keeping menu interactions performant and lightweight.
